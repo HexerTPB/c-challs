@@ -2,7 +2,6 @@ echo "Running tests..."
 echo
 
 output=$(./a.out)
-expected_output="Hello, World!"
 
 if [ $? -eq 0 ] ; then
   echo "Pass: Program exited zero"
@@ -11,7 +10,7 @@ else
   exit 1
 fi
 
-if [ "$output" == "$expected_output" ] ; then
+if [ "$output" =~ ^(?i)Hello\,? world\!?\n?$ ] ; then
   echo "Pass: Output is correct"
 else
   echo "Expected '$expected_output' but got: $output"
