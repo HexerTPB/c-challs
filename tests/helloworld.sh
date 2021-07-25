@@ -1,7 +1,8 @@
 echo "Running tests..."
 echo
 
-output=$(./a.out)
+output=$(./main)
+shopt -s nocasematch
 
 if [ $? -eq 0 ] ; then
   echo "Pass: Program exited zero"
@@ -10,10 +11,10 @@ else
   exit 1
 fi
 
-if [ "$output" =~ ^(?i)Hello\,? world\!?\n?$ ] ; then
+if [[ $output =~ ^hello,?\ world\!?$ ]] ; then
   echo "Pass: Output is correct"
 else
-  echo "Expected '$expected_output' but got: $output"
+  echo "Expected hello world but got: $output"
   exit 1
 fi
 

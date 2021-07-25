@@ -1,9 +1,9 @@
-a.out:
-	gcc hello.c
+build:
+	gcc main.c -o main
 
 clean:
-	rm hello
+	rm main
 
 test:
-	a.out
-	bash $(test).sh
+	./main
+	bash tests/$(test).sh
